@@ -7,7 +7,7 @@ namespace BTRS.Models
         [Key]
         public int BusId { get; set; }
         public string CptName { get; set; }
-        public int NOofSeats { get; set;
-    
+        public int NOofSeats { get; set; }
+        public ICollection<Bus_busTrips> bus_trips { get; set; }
     }
 }

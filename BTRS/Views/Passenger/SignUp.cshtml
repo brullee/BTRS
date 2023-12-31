@@ -1,0 +1,65 @@
+﻿@model BTRS.Models.Passenger
+
+@using (Html.BeginForm("SignUp", "Passenger", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Name, "Name")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Username, "Username")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Username)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.password, "Password")
+            </td>
+            <td>
+                @Html.PasswordFor(m => m.password)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.PhoneNo, "Phone number")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.PhoneNo)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Email, "Email")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Email)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Gender, "Gender")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Gender)
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="SignUp" class="btn btn-primary" />
+}
+
+@TempData["Msg"]
