@@ -31,7 +31,7 @@ namespace BTRS.Controllers
         public IActionResult SignUp(Passenger user)
         {
             bool empty = checkEmpty(user);
-            bool duplicate = checkEmail(user.Username);
+            bool duplicate = duplicateEmail(user.Username);
             bool gender_valid = validGender(user.Gender);
 
             if (!empty)
@@ -65,11 +65,11 @@ namespace BTRS.Controllers
         }
 
 
-        public bool checkEmail(string email)
+        public bool duplicateEmail(string email)
         { 
-            // checks if user is in the database, mainly used to check for duplicates
-            Passenger user = _context.passenger.Where(u => u.Username.Equals(email)).FirstOrDefault();
-            if (user != null)
+            // checks if user is in the database, since emails are unique
+            Passenger user = _context.passenger.Where(u => u.Email.Equals(email)).FirstOrDefault();
+            if (user != null) // if user is found
             {
                 return true;
             }
@@ -90,6 +90,17 @@ namespace BTRS.Controllers
         {
             List<string> validGenders = new List<string> { "male", "Male", "m", "Female", "female", "f" };
             return validGenders.Contains(gender);
+        }
+
+        public IActionResult TripList()
+        {
+            int userID = (int)HttpContext.Session.GetInt32("userID");
+
+            List<int> BookedTrips = _context.passengers_trips
+            .Where(t => t.passenger.PassengerId == userID).Select(t => t.trip.TripId).ToList();
+
+
+            return View(BookedTrips);
         }
 
 
@@ -125,14 +136,14 @@ namespace BTRS.Controllers
                 {
                     HttpContext.Session.SetInt32("PassengerID", user.PassengerId);
 
-                    return View();
+                    return RedirectToAction("TripList");
                 }
                 else if (admin != null)
                 {
 
                     HttpContext.Session.SetInt32("adminID", admin.Id);
 
-                    return View();
+                    return RedirectToAction("Index","BusTrip");
                 }
                 else
                 {
