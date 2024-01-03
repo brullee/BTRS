@@ -94,13 +94,22 @@ namespace BTRS.Controllers
 
         public IActionResult TripList()
         {
-            int userID = (int)HttpContext.Session.GetInt32("userID");
+            int userID = (int)HttpContext.Session.GetInt32("PassengerID");
+    
+            if(userID != null)
+            {
+                List<BusTrip> BookedTrips = _context.passengers_trips
+            .Where(t => t.passenger.PassengerId == userID).Select(t => t.trip).ToList();
 
-            List<int> BookedTrips = _context.passengers_trips
-            .Where(t => t.passenger.PassengerId == userID).Select(t => t.trip.TripId).ToList();
 
-
-            return View(BookedTrips);
+                return View(BookedTrips);
+            }
+            else
+            {
+                TempData["Msg"] = "The user Not Found";
+                return View();
+            }
+            
         }
 
 

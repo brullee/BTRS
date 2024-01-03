@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\PCC\Desktop\ASP\BTRS\BTRS
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/BusTrip/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -24,8 +28,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFNpZ25VcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/TripList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFRyaXBMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Shared/Error.cshtml]
