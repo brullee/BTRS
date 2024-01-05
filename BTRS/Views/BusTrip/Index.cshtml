@@ -5,27 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Bus trips</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
-    <a asp-action="Create" asp-controller="BusTrip">Create Trip</a>
+    <a asp-action="Create" asp-controller="BusTrip">Create</a>
 
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TripId)
+                Trip ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Destination)
+                Destination
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartDate)
+                Start Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EndDate)
+                End Date
             </th>
             <th></th>
         </tr>

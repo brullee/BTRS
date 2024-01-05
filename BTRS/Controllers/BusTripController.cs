@@ -2,6 +2,7 @@
 using BTRS.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BTRS.Controllers
 {
@@ -38,23 +39,20 @@ namespace BTRS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(BusTrip trip)
         {
-            try
-            {
+
                 int adminid = (int)HttpContext.Session.GetInt32("adminID");
                 
                 Admin admin = _context.admin.Where(
                   a => a.Id == adminid
                   ).FirstOrDefault();
 
+                trip.admin = admin;
+
                 _context.busTrip.Add(trip);
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            
         }
 
         // GET: BusTripController/Edit/5

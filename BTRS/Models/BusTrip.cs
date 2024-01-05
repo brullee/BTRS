@@ -13,7 +13,7 @@ namespace BTRS.Models
         public DateTime EndDate { get; set; }
 
         [ForeignKey("AdminID")]
-        public int adminID { get; set; }
+        public Admin admin { get; set; }
         public ICollection<passengers_trips> passengers_trips { get; set; }
         public ICollection<Bus_busTrips> bus_trips { get; set; }
 
