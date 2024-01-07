@@ -6,7 +6,9 @@ namespace BTRS.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public Passenger passenger { get; set; }
+        [Required]
         public BusTrip trip { get; set; }
     }
 }

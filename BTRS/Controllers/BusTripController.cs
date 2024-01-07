@@ -48,7 +48,18 @@ namespace BTRS.Controllers
 
                 trip.admin = admin;
 
-                _context.busTrip.Add(trip);
+            if (trip.StartDate > trip.EndDate)
+            {
+                TempData["msg"] = "Start date is less than the end date.";
+            }
+            
+            if (string.IsNullOrEmpty(trip.Destination))
+            {
+                ModelState.AddModelError("Destination", "Destination is required");
+                return View(trip);
+            }
+
+            _context.busTrip.Add(trip);
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
@@ -59,6 +70,8 @@ namespace BTRS.Controllers
         public ActionResult Edit(int id)
         {
             BusTrip trip = _context.busTrip.Find(id);
+            HttpContext.Session.SetInt32("busTripID", trip.TripId);
+
             return View(trip);
         }
 
@@ -104,5 +117,48 @@ namespace BTRS.Controllers
                 return View();
             }
         }
+
+        public IActionResult ViewBuses(int id)
+        {
+            BusTrip currTrip = _context.busTrip.Find(id);
+            return View(currTrip);
+        }
+
+        [HttpPost]
+        public IActionResult RemoveBus(int id)
+        {
+            Bus bus = _context.bus.Find(id);
+            BusTrip trip = _context.busTrip.Find((int)HttpContext.Session.GetInt32("busTripID"));
+            Bus_busTrips bus_busTrip = _context.bus_busTrips.Where(t => t.trip.TripId == trip.TripId && t.bus.BusId == bus.BusId).FirstOrDefault();
+
+            if (bus_busTrip != null)
+            {
+                _context.bus_busTrips.Remove(bus_busTrip);
+                _context.SaveChanges();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult AddBus()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddBus(int id)
+        {
+            BusTrip trip = _context.busTrip.Find((int)HttpContext.Session.GetInt32("busTripID"));
+            Bus bus = _context.bus.Find(id);
+
+                Bus_busTrips bus_busTrip = new Bus_busTrips();
+                bus_busTrip.trip = trip;
+                bus_busTrip.bus = bus;
+                _context.bus_busTrips.Add(bus_busTrip);
+                _context.SaveChanges();
+            
+            return RedirectToAction(nameof(Index)); 
+        }
+        
+
     }
 }

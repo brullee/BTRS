@@ -38,7 +38,7 @@ namespace BTRS.Controllers
             {
                 if (!duplicate)
                 {
-                    if(!gender_valid)
+                    if (!gender_valid)
                     {
                         TempData["Msg"] = "Gender is invalid";
                         return View();
@@ -46,8 +46,9 @@ namespace BTRS.Controllers
                     _context.passenger.Add(user);
                     _context.SaveChanges();
 
-                    TempData["Msg"] = "the data was saved";
-                    return View();
+                    HttpContext.Session.SetInt32("PassengerID", user.PassengerId);
+
+                    return RedirectToAction("TripList");
                 }
                 else
                 {
@@ -101,8 +102,8 @@ namespace BTRS.Controllers
                 List<BusTrip> BookedTrips = _context.passengers_trips
             .Where(t => t.passenger.PassengerId == userID).Select(t => t.trip).ToList();
 
-
-                return View(BookedTrips);
+                List<Bus_busTrips> bookedBuses = _context.bus_busTrips.Where(t => BookedTrips.Contains(t.trip)).ToList();
+                return View(bookedBuses);
             }
             else
             {
@@ -160,8 +161,71 @@ namespace BTRS.Controllers
                 }
 
             }
+            else
+            {
+                TempData["Msg"] = "The user Not Found";
+            }
             return View();
         }
 
+        public IActionResult TripDetails(int id)
+        {
+            BusTrip trip = _context.busTrip.Find(id);
+            return View(trip);
+        }
+
+        public IActionResult ViewTrips()
+        {
+            List<Bus_busTrips> availableTrips = _context.bus_busTrips.ToList();
+            return View(availableTrips);
+        }
+
+        public IActionResult AddTrip(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("AddTrip");
+            }
+
+            int passengerID = (int)HttpContext.Session.GetInt32("PassengerID");
+            BusTrip trip = _context.busTrip.Find(id);
+
+            passengers_trips checkUnique = _context.passengers_trips.Where
+            (t => t.passenger.PassengerId == passengerID && t.trip == trip)
+           .FirstOrDefault(); 
+            
+            //Checking if the trip is already booked.
+
+            if (checkUnique == null)
+            {
+                Passenger passenger = _context.passenger.Find(passengerID);
+
+                passengers_trips passenger_trip = new passengers_trips();
+                passenger_trip.trip = trip;
+                passenger_trip.passenger = passenger;
+
+                _context.passengers_trips.Add(passenger_trip);
+                _context.SaveChanges();
+            }
+                  
+            return RedirectToAction("AddTrip");
+        }
+
+        public IActionResult RemoveTrip(int id)
+        {
+            int passengerID = (int)HttpContext.Session.GetInt32("PassengerID");
+            BusTrip trip = _context.busTrip.Find(id);
+
+            passengers_trips passenger_trip = _context.passengers_trips
+            .FirstOrDefault(t => t.passenger.PassengerId == passengerID && t.trip.TripId == trip.TripId);
+
+            if (passenger_trip != null)
+            {
+                _context.passengers_trips.Remove(passenger_trip);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("TripList");
+        }
     }
 }

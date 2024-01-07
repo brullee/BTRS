@@ -14,6 +14,7 @@ namespace BTRS.Data
         public DbSet<Bus> bus { set; get; }
         public DbSet<BusTrip> busTrip { set; get; }
         public DbSet<passengers_trips> passengers_trips { set; get; }
+        public DbSet<Bus_busTrips> bus_busTrips { set; get; }
 
     }
 }

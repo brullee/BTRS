@@ -1,0 +1,47 @@
+﻿@model BTRS.Models.BusTrip
+
+@{
+    ViewData["Title"] = "View Buses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>View Buses</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Captain Name
+            </th>
+            <th>
+                Number of Seats
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(Model.bus_trips != null)
+        {
+            @foreach (var item in Model.bus_trips)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bus.CptName)
+                        <br />
+                        @Html.DisplayFor(modelItem => item.bus.NOofSeats)
+                    </td>
+                    <td>
+                        <a asp-action="RemoveBus" asp-route-id="@item.bus.BusId">Remove bus</a>
+                    </td>
+                </tr>
+            }
+            <a asp-action="AddBus" asp-route-id="@Model.TripId">Add Bus</a>
+
+        }
+
+
+    </tbody>
+</table>
+

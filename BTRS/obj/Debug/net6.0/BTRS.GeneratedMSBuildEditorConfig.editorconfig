@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\PCC\Desktop\ASP\BTRS\BTRS
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/BusTrip/AddBus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxBZGRCdXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/BusTrip/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -36,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/BusTrip/ViewBuses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxWaWV3QnVzZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -52,8 +60,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFNpZ25VcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/TripDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFRyaXBEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/TripList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFRyaXBMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/VIewTrips.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFZJZXdUcmlwcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Shared/Error.cshtml]

@@ -8,8 +8,11 @@ namespace BTRS.Models
 
         [Key]
         public int TripId { get; set; }
+        [Required]
         public string Destination { get; set; }
+        [Required]
         public DateTime StartDate { get; set; }
+        [Required]
         public DateTime EndDate { get; set; }
 
         [ForeignKey("AdminID")]
