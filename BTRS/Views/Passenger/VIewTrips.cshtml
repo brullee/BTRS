@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BTRS.Models.Bus_busTrips>
+﻿@model IEnumerable<BTRS.Models.BusTrip>
 
 @{
     ViewData["Title"] = "Index";
@@ -36,16 +36,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.trip.TripId)
+                    @Html.DisplayFor(modelItem => item.TripId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.trip.Destination)
+                    @Html.DisplayFor(modelItem => item.Destination)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.trip.StartDate)
+                    @Html.DisplayFor(modelItem => item.StartDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.trip.EndDate)
+                    @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.bus.CptName)
@@ -54,8 +54,8 @@
                     @Html.DisplayFor(modelItem => item.bus.NOofSeats)
                 </td>
                 <td>
-                    <a asp-action="AddTrip" asp-route-id="@item.trip?.TripId">Book trip</a> |
-                    <a asp-action="TripDetails" asp-route-id="@item.trip?.TripId">Details</a> |
+                    <a asp-action="AddTrip" asp-route-id="@item.TripId">Book trip</a> |
+                    <a asp-action="TripDetails" asp-route-id="@item.TripId">Details</a> |
                 </td>
             </tr>
         }

@@ -118,46 +118,13 @@ namespace BTRS.Controllers
             }
         }
 
-        public IActionResult ViewBuses(int id)
-        {
-            BusTrip currTrip = _context.busTrip.Find(id);
-            return View(currTrip);
-        }
-
-        [HttpPost]
-        public IActionResult RemoveBus(int id)
-        {
-            Bus bus = _context.bus.Find(id);
-            BusTrip trip = _context.busTrip.Find((int)HttpContext.Session.GetInt32("busTripID"));
-            Bus_busTrips bus_busTrip = _context.bus_busTrips.Where(t => t.trip.TripId == trip.TripId && t.bus.BusId == bus.BusId).FirstOrDefault();
-
-            if (bus_busTrip != null)
-            {
-                _context.bus_busTrips.Remove(bus_busTrip);
-                _context.SaveChanges();
-            }
-            return RedirectToAction(nameof(Index));
-        }
 
         public IActionResult AddBus()
         {
             return View();
         }
 
-        [HttpPost]
-        public IActionResult AddBus(int id)
-        {
-            BusTrip trip = _context.busTrip.Find((int)HttpContext.Session.GetInt32("busTripID"));
-            Bus bus = _context.bus.Find(id);
 
-                Bus_busTrips bus_busTrip = new Bus_busTrips();
-                bus_busTrip.trip = trip;
-                bus_busTrip.bus = bus;
-                _context.bus_busTrips.Add(bus_busTrip);
-                _context.SaveChanges();
-            
-            return RedirectToAction(nameof(Index)); 
-        }
         
 
     }

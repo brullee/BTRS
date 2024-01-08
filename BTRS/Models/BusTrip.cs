@@ -18,7 +18,7 @@ namespace BTRS.Models
         [ForeignKey("AdminID")]
         public Admin admin { get; set; }
         public ICollection<passengers_trips> passengers_trips { get; set; }
-        public ICollection<Bus_busTrips> bus_trips { get; set; }
+        public Bus bus { get; set; }
 
     }
 }

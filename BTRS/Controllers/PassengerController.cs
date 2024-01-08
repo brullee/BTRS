@@ -43,6 +43,7 @@ namespace BTRS.Controllers
                         TempData["Msg"] = "Gender is invalid";
                         return View();
                     }
+             
                     _context.passenger.Add(user);
                     _context.SaveChanges();
 
