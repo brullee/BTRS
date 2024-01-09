@@ -17,7 +17,8 @@ namespace BTRS.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     firstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     lastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    username = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,6 +47,7 @@ namespace BTRS.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -64,21 +66,21 @@ namespace BTRS.Migrations
                     Destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    busID = table.Column<int>(type: "int", nullable: false),
-                    adminID = table.Column<int>(type: "int", nullable: false)
+                    AdminID = table.Column<int>(type: "int", nullable: false),
+                    BusId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_busTrip", x => x.TripId);
                     table.ForeignKey(
-                        name: "FK_busTrip_admin_adminID",
-                        column: x => x.adminID,
+                        name: "FK_busTrip_admin_AdminID",
+                        column: x => x.AdminID,
                         principalTable: "admin",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_busTrip_bus_busID",
-                        column: x => x.busID,
+                        name: "FK_busTrip_bus_BusId",
+                        column: x => x.BusId,
                         principalTable: "bus",
                         principalColumn: "BusId",
                         onDelete: ReferentialAction.Cascade);
@@ -111,14 +113,14 @@ namespace BTRS.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_busTrip_adminID",
+                name: "IX_busTrip_AdminID",
                 table: "busTrip",
-                column: "adminID");
+                column: "AdminID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_busTrip_busID",
+                name: "IX_busTrip_BusId",
                 table: "busTrip",
-                column: "busID");
+                column: "BusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_passengers_trips_PassengerId",

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BTRS.Migrations
 {
     [DbContext(typeof(SystemDbContext))]
-    [Migration("20240108032522_n")]
-    partial class n
+    [Migration("20240108095441_f")]
+    partial class f
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -73,29 +73,6 @@ namespace BTRS.Migrations
                     b.ToTable("bus");
                 });
 
-            modelBuilder.Entity("BTRS.Models.Bus_busTrips", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<int>("BusId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TripId")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("BusId");
-
-                    b.HasIndex("TripId");
-
-                    b.ToTable("bus_busTrips");
-                });
-
             modelBuilder.Entity("BTRS.Models.BusTrip", b =>
                 {
                     b.Property<int>("TripId")
@@ -105,6 +82,9 @@ namespace BTRS.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TripId"), 1L, 1);
 
                     b.Property<int>("AdminID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BusId")
                         .HasColumnType("int");
 
                     b.Property<string>("Destination")
@@ -120,6 +100,8 @@ namespace BTRS.Migrations
                     b.HasKey("TripId");
 
                     b.HasIndex("AdminID");
+
+                    b.HasIndex("BusId");
 
                     b.ToTable("busTrip");
                 });
@@ -184,25 +166,6 @@ namespace BTRS.Migrations
                     b.ToTable("passengers_trips");
                 });
 
-            modelBuilder.Entity("BTRS.Models.Bus_busTrips", b =>
-                {
-                    b.HasOne("BTRS.Models.Bus", "bus")
-                        .WithMany("bus_trips")
-                        .HasForeignKey("BusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("BTRS.Models.BusTrip", "trip")
-                        .WithMany("bus_trips")
-                        .HasForeignKey("TripId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("bus");
-
-                    b.Navigation("trip");
-                });
-
             modelBuilder.Entity("BTRS.Models.BusTrip", b =>
                 {
                     b.HasOne("BTRS.Models.Admin", "admin")
@@ -211,7 +174,15 @@ namespace BTRS.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BTRS.Models.Bus", "bus")
+                        .WithMany("trips")
+                        .HasForeignKey("BusId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("admin");
+
+                    b.Navigation("bus");
                 });
 
             modelBuilder.Entity("BTRS.Models.passengers_trips", b =>
@@ -240,13 +211,11 @@ namespace BTRS.Migrations
 
             modelBuilder.Entity("BTRS.Models.Bus", b =>
                 {
-                    b.Navigation("bus_trips");
+                    b.Navigation("trips");
                 });
 
             modelBuilder.Entity("BTRS.Models.BusTrip", b =>
                 {
-                    b.Navigation("bus_trips");
-
                     b.Navigation("passengers_trips");
                 });
 

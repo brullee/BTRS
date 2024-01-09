@@ -103,8 +103,7 @@ namespace BTRS.Controllers
                 List<BusTrip> BookedTrips = _context.passengers_trips
             .Where(t => t.passenger.PassengerId == userID).Select(t => t.trip).ToList();
 
-                List<Bus_busTrips> bookedBuses = _context.bus_busTrips.Where(t => BookedTrips.Contains(t.trip)).ToList();
-                return View(bookedBuses);
+                return View(BookedTrips);
             }
             else
             {
@@ -177,7 +176,7 @@ namespace BTRS.Controllers
 
         public IActionResult ViewTrips()
         {
-            List<Bus_busTrips> availableTrips = _context.bus_busTrips.ToList();
+            List<BusTrip> availableTrips = _context.busTrip.ToList();
             return View(availableTrips);
         }
 

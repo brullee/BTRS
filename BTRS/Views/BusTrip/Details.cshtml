@@ -12,7 +12,7 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TripId)
+            @Html.DisplayNameFor(model => model.Destination)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Destination)
@@ -21,15 +21,21 @@
             @Html.DisplayNameFor(model => model.StartDate)
         </dt>
         <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.EndDate)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.bus.BusId)
+        </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.bus.CptName)
+            @Html.DisplayFor(model => model.bus.BusId)
         </dd>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.bus.NOofSeats)
-        </dd>
-        
+
     </dl>
 </div>
 <div>

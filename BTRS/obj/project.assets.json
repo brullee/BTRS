@@ -10687,19 +10687,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ASU\\.nuget\\packages\\": {}
+    "C:\\Users\\abdalla\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASU\\Desktop\\BTRS\\BTRS\\BTRS.csproj",
+      "projectUniqueName": "C:\\Users\\abdalla\\source\\repos\\BTRS\\BTRS\\BTRS.csproj",
       "projectName": "BTRS",
-      "projectPath": "C:\\Users\\ASU\\Desktop\\BTRS\\BTRS\\BTRS.csproj",
-      "packagesPath": "C:\\Users\\ASU\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASU\\Desktop\\BTRS\\BTRS\\obj\\",
+      "projectPath": "C:\\Users\\abdalla\\source\\repos\\BTRS\\BTRS\\BTRS.csproj",
+      "packagesPath": "C:\\Users\\abdalla\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\abdalla\\source\\repos\\BTRS\\BTRS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ASU\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\abdalla\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -10763,7 +10763,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

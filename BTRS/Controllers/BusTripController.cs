@@ -3,6 +3,7 @@ using BTRS.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace BTRS.Controllers
 {
@@ -18,12 +19,13 @@ namespace BTRS.Controllers
         // GET: BusTripController
         public ActionResult Index()
         {
-            return View(_context.busTrip.ToList());
+            return View(_context.busTrip.Include(bt => bt.bus).ToList());
         }
 
         // GET: BusTripController/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.bus = _context.busTrip.Include(bt => bt.bus).ToList();
             BusTrip trip = _context.busTrip.Find(id);
             return View(trip);
         }
@@ -31,28 +33,42 @@ namespace BTRS.Controllers
         // GET: BusTripController/Create
         public ActionResult Create()
         {
+            ViewBag.bus = _context.bus.ToList();
+
             return View();
         }
 
         // POST: BusTripController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BusTrip trip)
+        public async Task<ActionResult> Create(IFormCollection form)
         {
 
-                int adminid = (int)HttpContext.Session.GetInt32("adminID");
-                
-                Admin admin = _context.admin.Where(
-                  a => a.Id == adminid
-                  ).FirstOrDefault();
+            int adminid = (int)HttpContext.Session.GetInt32("adminID");
+            int busid = int.Parse(form["busId"]);
+            string destination = form["Destination"];
+            DateTime startdate = DateTime.Parse(form["StartDate"]);
+            DateTime enddate = DateTime.Parse(form["EndDate"]);
 
-                trip.admin = admin;
+
+            Admin admin = _context.admin.Where(
+              a => a.Id == adminid
+              ).FirstOrDefault();
+
+
+            BusTrip trip = new BusTrip();
+
+            trip.admin = admin;
+            trip.Destination = destination;
+            trip.StartDate = startdate;
+            trip.EndDate = enddate;
+            trip.bus = _context.bus.Find(busid);
 
             if (trip.StartDate > trip.EndDate)
             {
                 TempData["msg"] = "Start date is less than the end date.";
             }
-            
+
             if (string.IsNullOrEmpty(trip.Destination))
             {
                 ModelState.AddModelError("Destination", "Destination is required");
@@ -60,15 +76,16 @@ namespace BTRS.Controllers
             }
 
             _context.busTrip.Add(trip);
-                _context.SaveChanges();
+            _context.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
-            
+            return RedirectToAction(nameof(Index));
+
         }
 
         // GET: BusTripController/Edit/5
         public ActionResult Edit(int id)
         {
+            ViewBag.bus = _context.bus.ToList();
             BusTrip trip = _context.busTrip.Find(id);
             HttpContext.Session.SetInt32("busTripID", trip.TripId);
 
@@ -97,7 +114,10 @@ namespace BTRS.Controllers
         public ActionResult Delete(int id)
         {
             BusTrip trip = _context.busTrip.Find(id);
-            return View(trip);
+            _context.busTrip.Remove(trip);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: BusTripController/Delete/5
@@ -107,25 +127,13 @@ namespace BTRS.Controllers
         {
             try
             {
-                _context.busTrip.Remove(trip);
-                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(trip);
             }
         }
-
-
-        public IActionResult AddBus()
-        {
-            return View();
-        }
-
-
-        
-
     }
 }

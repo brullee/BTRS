@@ -26,6 +26,9 @@
             <th>
                 End Date
             </th>
+            <th>
+                Bus No.
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -44,6 +47,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bus.BusId)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.TripId">Edit</a> |
