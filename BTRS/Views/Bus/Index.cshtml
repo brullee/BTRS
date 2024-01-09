@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BTRS.Models.Bus>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Bus list</h1>
+
+<p>
+    <a asp-action="CreateBus" asp-controller="Bus">Add bus</a> <br />
+    <a asp-action="Index" asp-controller="BusTrip">Back to Trips</a>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Bus No.
+            </th>
+            <th>
+                Captain Name
+            </th>
+            <th>
+                Number of seats
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BusId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CptName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NOofSeats)
+                </td>
+                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BusId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.BusId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.BusId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

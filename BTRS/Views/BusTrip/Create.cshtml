@@ -27,19 +27,23 @@
                 <input asp-for="EndDate" class="form-control" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
+            <br />
+
             <div class="form-group">
                 <label class="control-label"> Bus </label>
 
                 <select name="BusID" id="BusID">
                     @for (int i = 0; i < ViewBag.Bus.Count; i++)
                     {
-                        <option value=@ViewBag.Bus[i].BusId>@ViewBag.Bus[i].BusId</option>
+                        <option value=@ViewBag.Bus[i].BusId>
+                            @($"Bus No.{ViewBag.Bus[i].BusId} - {ViewBag.Bus[i].NOofSeats} seats - Captain: {ViewBag.Bus[i].CptName}")
+                        </option>
 
                     }
 
                 </select>
             </div>
-
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -47,6 +51,7 @@
     </div>
 </div>
 
+<br />
 <div>
     <a asp-action="Index">Back to List</a>
 </div>

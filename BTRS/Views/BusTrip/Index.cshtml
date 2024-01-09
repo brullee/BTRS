@@ -8,7 +8,8 @@
 <h1>Bus trips</h1>
 
 <p>
-    <a asp-action="Create" asp-controller="BusTrip">Create</a>
+    <a asp-action="Create" asp-controller="BusTrip">Create</a> <br />
+    <a asp-action="Index" asp-controller="Bus">View buses</a>
 
 </p>
 <table class="table">
@@ -22,6 +23,9 @@
             </th>
             <th>
                 Start Date
+            </th>
+            <th>
+                End Date
             </th>
             <th>
                 Bus No.
@@ -44,6 +48,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.bus.BusId)

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BTRS.Models
@@ -18,6 +19,8 @@ namespace BTRS.Models
         [ForeignKey("AdminID")]
         public Admin admin { get; set; }
         public ICollection<passengers_trips> passengers_trips { get; set; }
+
+        [Required]
         public Bus bus { get; set; }
 
     }

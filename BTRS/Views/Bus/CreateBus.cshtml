@@ -1,0 +1,34 @@
+﻿@model BTRS.Models.Bus
+
+@using (Html.BeginForm("CreateBus", "Bus", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.CptName, "Captain name ")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.CptName)
+                @Html.ValidationMessageFor(m => m.CptName)
+            </td>
+        </tr>
+        <br />
+
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.NOofSeats, "Number of seats ")
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.NOofSeats)
+            </td>
+        </tr>
+        <br />
+
+    </table>
+
+    <input type="submit" value="Create bus" class="btn btn-primary" /> <br />
+    <a asp-action="Index" asp-controller="Bus">Back to list</a>
+
+}
+
+@TempData["Msg"]

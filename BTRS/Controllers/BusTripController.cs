@@ -50,6 +50,10 @@ namespace BTRS.Controllers
             DateTime startdate = DateTime.Parse(form["StartDate"]);
             DateTime enddate = DateTime.Parse(form["EndDate"]);
 
+            if(busid == null)
+            {
+                TempData["msg"] = "No bus found";
+            }
 
             Admin admin = _context.admin.Where(
               a => a.Id == adminid
@@ -135,5 +139,7 @@ namespace BTRS.Controllers
                 return View(trip);
             }
         }
+
+       
     }
 }
