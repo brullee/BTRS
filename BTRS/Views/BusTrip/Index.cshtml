@@ -24,10 +24,10 @@
                 Start Date
             </th>
             <th>
-                End Date
+                Bus No.
             </th>
             <th>
-                Bus No.
+                Captain Name
             </th>
             <th></th>
         </tr>
@@ -46,10 +46,10 @@
                     @Html.DisplayFor(modelItem => item.StartDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
+                    @Html.DisplayFor(modelItem => item.bus.BusId)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.bus.BusId)
+                    @Html.DisplayFor(modelItem => item.bus.CptName)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.TripId">Edit</a> |

@@ -2,6 +2,7 @@
 using BTRS.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Plugins;
 
 namespace BTRS.Controllers
@@ -13,12 +14,6 @@ namespace BTRS.Controllers
         public PassengerController(SystemDbContext context)
         {
             _context = context;
-        }
-
-        // GET: PassengerController
-        public ActionResult Index()
-        {
-            return View();
         }
 
         [HttpGet]
@@ -96,6 +91,7 @@ namespace BTRS.Controllers
 
         public IActionResult TripList()
         {
+            _context.busTrip.Include(bt => bt.bus).ToList();
             int userID = (int)HttpContext.Session.GetInt32("PassengerID");
     
             if(userID != null)
@@ -170,45 +166,52 @@ namespace BTRS.Controllers
 
         public IActionResult TripDetails(int id)
         {
+            ViewBag.bus = _context.busTrip.Include(bt => bt.bus).ToList();
             BusTrip trip = _context.busTrip.Find(id);
             return View(trip);
         }
 
         public IActionResult ViewTrips()
         {
-            List<BusTrip> availableTrips = _context.busTrip.ToList();
+            int passId = (int)HttpContext.Session.GetInt32("PassengerID");
+            List<int> bookedTripIds = _context.passengers_trips
+            .Where(pt => pt.passenger.PassengerId == passId)
+            .Select(pt => pt.trip.TripId)
+            .ToList();
+
+            List<BusTrip> availableTrips = _context.busTrip
+            .Where(bt => !bookedTripIds.Contains(bt.TripId))
+            .Include(bt => bt.bus)
+            .ToList();
+
+            //_context.busTrip.Include(bt => bt.bus).ToList();
             return View(availableTrips);
         }
 
         public IActionResult AddTrip(int id)
         {
-            if (!ModelState.IsValid)
+            int tripId = id;
+            int passId = (int)HttpContext.Session.GetInt32("PassengerID");
+
+
+            bool alreadyBooked = _context.passengers_trips
+            .Any(pt => pt.passenger.PassengerId == passId && pt.trip.TripId == tripId);
+
+            if (alreadyBooked)
             {
-                return View("AddTrip");
+
+                return RedirectToAction("TripList");
             }
 
-            int passengerID = (int)HttpContext.Session.GetInt32("PassengerID");
-            BusTrip trip = _context.busTrip.Find(id);
+                passengers_trips pass_trips = new passengers_trips();
+                pass_trips.trip = _context.busTrip.Find(tripId);
+                pass_trips.passenger = _context.passenger.Find(passId);
 
-            passengers_trips checkUnique = _context.passengers_trips.Where
-            (t => t.passenger.PassengerId == passengerID && t.trip == trip)
-           .FirstOrDefault(); 
-            
-            //Checking if the trip is already booked.
-
-            if (checkUnique == null)
-            {
-                Passenger passenger = _context.passenger.Find(passengerID);
-
-                passengers_trips passenger_trip = new passengers_trips();
-                passenger_trip.trip = trip;
-                passenger_trip.passenger = passenger;
-
-                _context.passengers_trips.Add(passenger_trip);
+                _context.passengers_trips.Add(pass_trips);
                 _context.SaveChanges();
-            }
-                  
-            return RedirectToAction("AddTrip");
+
+
+                return RedirectToAction("TripList");
         }
 
         public IActionResult RemoveTrip(int id)

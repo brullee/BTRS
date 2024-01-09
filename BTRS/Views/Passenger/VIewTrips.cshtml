@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Book trips</h1>
+<h1>Available Trips</h1>
 
 <table class="table">
     <thead>
@@ -21,9 +21,6 @@
             </th>
             <th>
                 End Date
-            </th>
-            <th>
-                Captain name
             </th>
             <th>
                 Number of seats
@@ -48,14 +45,11 @@
                     @Html.DisplayFor(modelItem => item.EndDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.bus.CptName)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.bus.NOofSeats)
                 </td>
                 <td>
                     <a asp-action="AddTrip" asp-route-id="@item.TripId">Book trip</a> |
-                    <a asp-action="TripDetails" asp-route-id="@item.TripId">Details</a> |
+                    <a asp-action="TripDetails" asp-route-id="@item.TripId">Details</a>
                 </td>
             </tr>
         }

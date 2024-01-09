@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Trip List</h1>
+<h1>Booked Trips</h1>
 
 
 <table class="table">
@@ -21,13 +21,10 @@
                 Start Date
             </th>
             <th>
-                End Date
+                Bus No.
             </th>
             <th>
-                Bus number
-            </th>
-            <th>
-                Captain name
+                Captain Name
             </th>
             <th></th>
         </tr>
@@ -37,27 +34,24 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TripId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Destination)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StartDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EndDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.bus.BusId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.bus.CptName)
-                </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TripId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destination)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bus.BusId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.bus.CptName)
+                    </td>
                 <td>
                         <a asp-action="RemoveTrip" asp-route-id="@item.TripId">Remove trip</a> |
-                        <a asp-action="TripDetails" asp-route-id="@item.TripId">Details</a> |
+                        <a asp-action="TripDetails" asp-route-id="@item.TripId">Details</a>
                 </td>
             </tr>
 
