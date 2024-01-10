@@ -24,17 +24,14 @@
                 <input asp-for="NOofSeats" class="form-control" />
                 <span asp-validation-for="NOofSeats" class="text-danger"></span>
             </div>
-
+            <br />
             <div class="form-group">
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
 
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

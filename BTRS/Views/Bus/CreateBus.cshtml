@@ -25,10 +25,14 @@
         <br />
 
     </table>
+    <div>
+        <a asp-action="Index" class="btn btn-secondary">Back</a>
+        <input type="submit" value="Create bus" class="btn btn-primary" /> <br />
 
-    <input type="submit" value="Create bus" class="btn btn-primary" /> <br />
-    <a asp-action="Index" asp-controller="Bus">Back to list</a>
+    </div>
+
 
 }
+
 
 @TempData["Msg"]

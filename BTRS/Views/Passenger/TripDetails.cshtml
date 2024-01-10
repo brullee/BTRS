@@ -49,5 +49,11 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Back</a>
+    <button onclick="goBack()" class="btn btn-secondary">Back</button>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </div>
