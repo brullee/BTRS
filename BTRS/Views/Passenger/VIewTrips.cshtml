@@ -1,11 +1,13 @@
 ﻿@model IEnumerable<BTRS.Models.BusTrip>
+@Html.Partial("_userTop")
+
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Available Trips</h1>
+<h1>Book Trips</h1>
 
 <div>
     <a asp-action="TripList" asp-controller="Passenger">Back</a>
