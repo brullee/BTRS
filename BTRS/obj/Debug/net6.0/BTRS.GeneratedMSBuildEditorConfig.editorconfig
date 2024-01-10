@@ -9,97 +9,97 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BTRS
 build_property.RootNamespace = BTRS
-build_property.ProjectDir = C:\Users\PCC\Desktop\ASP\BTRS\BTRS\
+build_property.ProjectDir = C:\Users\abdalla\source\repos\BTRS\BTRS\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\PCC\Desktop\ASP\BTRS\BTRS
+build_property.MSBuildProjectDirectory = C:\Users\abdalla\source\repos\BTRS\BTRS
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/BusTrip/Create.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/BusTrip/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/BusTrip/Delete.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/BusTrip/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/BusTrip/Details.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/BusTrip/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/BusTrip/Edit.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/BusTrip/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/BusTrip/Index.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/BusTrip/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzVHJpcFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Bus/CreateBus.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Bus/CreateBus.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzXENyZWF0ZUJ1cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Bus/Delete.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Bus/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Bus/Details.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Bus/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Bus/Edit.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Bus/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Bus/Index.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Bus/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Home/Index.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Home/Privacy.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/Login.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Passenger/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/SignUp.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Passenger/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFNpZ25VcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/TripDetails.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Passenger/TripDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFRyaXBEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/TripList.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Passenger/TripList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFRyaXBMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Passenger/VIewTrips.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Passenger/VIewTrips.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFzc2VuZ2VyXFZJZXdUcmlwcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Shared/Error.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/_ViewImports.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/_ViewStart.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/PCC/Desktop/ASP/BTRS/BTRS/Views/Shared/_Layout.cshtml]
+[C:/Users/abdalla/source/repos/BTRS/BTRS/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-jw1aid6ux9

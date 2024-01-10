@@ -1,31 +1,28 @@
-﻿@model BTRS.Models.Login;
+﻿@* @model BTRS.Models.Login;
 
-<form method="post">
+<div style="text-align: center;">
+    <form method="post" style="display: inline-block; text-align: left;">
     <table>
-        <tr>
-            <td>
+        
+            <tr>
                 Username
-            </td>
-            <td>
+            </tr>
+            <tr>
                 <input asp-for="username" type="text" class="form-control" />
 
-            </td>
+            </tr>
             <td>
                 <span asp-validation-for="username"> </span>
             </td>
-        </tr>
+            
 
-        <tr>
-            <td>
+            <tr>
                 Password
-            </td>
-            <td>
+            </tr>
+            <tr>
                 <input asp-for="password" type="password" class="form-control" />
-            </td>
-            <td>
                 <span style="color:red" asp-validation-for="password"> </span>
-            </td>
-        </tr>
+            </tr>
 
     </table>
     <br />
@@ -35,5 +32,50 @@
 
 
 </form>
+</div>
 
 @TempData["Msg"]
+ *@
+
+
+@model BTRS.Models.Login;
+
+<div class="container">
+    @using (Html.BeginForm("Login", "Passenger", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <table class="table">
+
+                    <tr>
+                        @Html.LabelFor(m => m.username, "Username")
+                        @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+
+                    </tr>
+                    <tr>
+                        @Html.TextBoxFor(m => m.username, new { @class = "form-control" })
+                    </tr>
+
+
+                    <tr>
+                        @Html.LabelFor(m => m.password, "Password")
+                        @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+
+                    </tr>
+                    <tr>
+                        @Html.PasswordFor(m => m.password, new { @class = "form-control" })     
+                    </tr>
+
+                </table>
+
+                <div class="col-md-6 offset-md-3">
+                <div class="form-group mt-3 text-center">
+                    <a asp-action="SignUp" asp-controller="Passenger" class="btn btn-outline-primary">Sign Up</a>
+                        <button type="submit" class="btn btn-primary">Login</button>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    }
+</div>

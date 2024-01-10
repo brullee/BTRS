@@ -1,65 +1,82 @@
 ﻿@model BTRS.Models.Passenger
 
-@using (Html.BeginForm("SignUp", "Passenger", FormMethod.Post))
-{
-    <table>
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.Name, "Name")
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.Name)
-                @Html.ValidationMessageFor(m => m.Name)
-            </td>
-        </tr>
+<div class="container">
+    @using (Html.BeginForm("SignUp", "Passenger", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <table class="table">
+                    
+                        <tr>
+                            @Html.LabelFor(m => m.Name, "Name")
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </tr>
+                        <tr>
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        </tr>
+                    
 
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.Username, "Username")
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.Username)
-            </td>
-        </tr>
+                    
+                        <tr>
+                            @Html.LabelFor(m => m.Username, "Username")
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
 
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.password, "Password")
-            </td>
-            <td>
-                @Html.PasswordFor(m => m.password)
-            </td>
-        </tr>
+                        </tr>
+                        <tr>
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                        </tr>
+                    
 
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.PhoneNo, "Phone number")
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.PhoneNo)
-            </td>
-        </tr>
+                    
+                        <tr>
+                            @Html.LabelFor(m => m.password, "Password")
+                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
 
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.Email, "Email")
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.Email)
-            </td>
-        </tr>
+                        </tr>
+                        <tr>
+                            @Html.PasswordFor(m => m.password, new { @class = "form-control" })
+                        </tr>
+                    
 
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.Gender, "Gender")
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.Gender)
-            </td>
-        </tr>
-    </table>
+                    
+                        <tr>
+                            @Html.LabelFor(m => m.PhoneNo, "Phone number")
+                            @Html.ValidationMessageFor(m => m.PhoneNo, "", new { @class = "text-danger" })
 
-    <input type="submit" value="SignUp" class="btn btn-primary" />
-}
+                        </tr>
+                        <tr>
+                            @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control" })
+                        </tr>
+                    
 
-@TempData["Msg"]
+                    
+                        <tr>
+                            @Html.LabelFor(m => m.Email, "Email")
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+                        </tr>
+                        <tr>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        </tr>
+                    
+
+                    
+                        <tr>
+                            @Html.LabelFor(m => m.Gender, "Gender")
+                            @Html.ValidationMessageFor(m => m.Gender, "", new { @class = "text-danger" })
+
+                        </tr>
+                        <tr>
+                            @Html.TextBoxFor(m => m.Gender, new { @class = "form-control" })
+                        </tr>
+                    
+                </table>
+                <div class="form-group mt-3 text-center">
+                    <input type="submit" value="Sign Up" class="btn btn-primary" />
+                    <a asp-action="Login" asp-controller="Passenger" class="btn btn-outline-primary">Login</a>
+                </div>
+                
+            </div>
+        </div>
+    }
+</div>
