@@ -99,10 +99,45 @@ namespace BTRS.Controllers
         // POST: BusTripController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, BusTrip trip)
+        public async Task<ActionResult> Edit(IFormCollection form)
         {
             try
             {
+                int adminid = (int)HttpContext.Session.GetInt32("adminID");
+                int tripID = int.Parse(form["TripID"]);
+                int busid = int.Parse(form["busId"]);
+                string destination = form["Destination"];
+                DateTime startdate = DateTime.Parse(form["StartDate"]);
+                DateTime enddate = DateTime.Parse(form["EndDate"]);
+
+                if (busid == null)
+                {
+                    TempData["msg"] = "No bus found";
+                }
+
+                Admin admin = _context.admin.Where(
+                  a => a.Id == adminid
+                  ).FirstOrDefault();
+
+
+                BusTrip trip = _context.busTrip.Find(tripID);
+
+                trip.admin = admin;
+                trip.Destination = destination;
+                trip.StartDate = startdate;
+                trip.EndDate = enddate;
+                trip.bus = _context.bus.Find(busid);
+
+                if (trip.StartDate > trip.EndDate)
+                {
+                    TempData["msg"] = "Start date is less than the end date.";
+                }
+
+                if (string.IsNullOrEmpty(trip.Destination))
+                {
+                    ModelState.AddModelError("Destination", "Destination is required");
+                    return View(trip);
+                }
                 _context.busTrip.Update(trip);
                 _context.SaveChanges();
 

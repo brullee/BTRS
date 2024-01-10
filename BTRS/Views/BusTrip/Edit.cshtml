@@ -34,8 +34,16 @@
             <div class="form-group">
                 <label class="control-label"> Bus </label>
 
-                <select asp-for="bus" asp-items="@(new SelectList(ViewBag.Bus, "BusId", "BusId", Model.bus?.BusId))" class="form-control">
-                    <option value="">Select a bus</option>
+
+                <select name="BusID" id="BusID">
+                    @for (int i = 0; i < ViewBag.bus.Count; i++)
+                    {
+                        <option value=@ViewBag.bus[i].BusId>
+                            @($"{ViewBag.bus[i].BusId}")
+                        </option>
+
+                    }
+
                 </select>
                 <span asp-validation-for="bus" class="text-danger"></span>
             </div>
@@ -45,7 +53,7 @@
                 <a asp-action="Index" class="btn btn-secondary">Back</a>
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
-            
+
         </form>
 
     </div>
