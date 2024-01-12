@@ -53,6 +53,7 @@ namespace BTRS.Controllers
             if(busid == null)
             {
                 TempData["msg"] = "No bus found";
+                return RedirectToAction(nameof(Index));
             }
 
             Admin admin = _context.admin.Where(
@@ -77,6 +78,14 @@ namespace BTRS.Controllers
             {
                 ModelState.AddModelError("Destination", "Destination is required");
                 return View(trip);
+            }
+
+            if (trip.bus != null)
+            {
+                if (trip.bus.trips != null && !trip.bus.trips.Contains(trip))
+                {
+                    trip.bus.trips.Add(trip);
+                }
             }
 
             _context.busTrip.Add(trip);
@@ -128,6 +137,14 @@ namespace BTRS.Controllers
                 trip.EndDate = enddate;
                 trip.bus = _context.bus.Find(busid);
 
+                if (trip.bus != null)
+                {
+                    if (trip.bus.trips != null && !trip.bus.trips.Contains(trip))
+                    {
+                        trip.bus.trips.Add(trip);
+                    }
+                }
+
                 if (trip.StartDate > trip.EndDate)
                 {
                     TempData["msg"] = "Start date is less than the end date.";
@@ -153,6 +170,13 @@ namespace BTRS.Controllers
         public ActionResult Delete(int id)
         {
             BusTrip trip = _context.busTrip.Find(id);
+            
+            if(trip.bus != null)
+            {
+                Bus bus = _context.bus.Find(trip.bus.BusId);
+                bus.trips.Remove(trip);
+            }
+
             _context.busTrip.Remove(trip);
             _context.SaveChanges();
 
