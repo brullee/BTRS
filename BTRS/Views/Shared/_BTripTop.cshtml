@@ -1,4 +1,6 @@
-﻿<header>
+﻿@model IEnumerable<BTRS.Models.BusTrip>
+
+<header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="https://github.com/brullee/BTRS" style="font-weight: 600; font-size:25px">BTRS</a>
@@ -9,14 +11,16 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Passenger" asp-action="TripList" >Booked Trips</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="BusTrip" asp-action="Index" style="font-weight: 650">Bus Trips</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Passenger" asp-action="ViewTrips">Available Trips</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Bus" asp-action="Index">Bus List</a>
                     </li>
                 </ul>
+
+                <a asp-action="Create" asp-controller="BusTrip" class="btn btn-primary ml-auto">Create</a>
+
             </div>
         </div>
     </nav>
 </header>
-
