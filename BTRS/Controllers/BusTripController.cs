@@ -43,23 +43,43 @@ namespace BTRS.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(IFormCollection form)
         {
-
             int adminid = (int)HttpContext.Session.GetInt32("adminID");
-            int busid = int.Parse(form["busId"]);
+
+            if (!_context.bus.Any())
+            {
+                TempData["msg"] = "No buses found. Cannot create a trip without buses.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Check if "busId" is present in the form
+            if (!form.ContainsKey("busId") || string.IsNullOrEmpty(form["busId"]))
+            {
+                TempData["msg"] = "No bus selected. Please choose a bus.";
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Attempt to parse "busId" as an integer
+            if (!int.TryParse(form["busId"], out int busid))
+            {
+                TempData["msg"] = "Invalid busId. Please select a valid bus.";
+                return RedirectToAction(nameof(Index));
+            }
+
             string destination = form["Destination"];
             DateTime startdate = DateTime.Parse(form["StartDate"]);
             DateTime enddate = DateTime.Parse(form["EndDate"]);
 
-            if(busid == null)
+            // Check if there are buses available
+
+            // Check if the selected bus exists
+            Bus selectedBus = _context.bus.Find(busid);
+            if (selectedBus == null)
             {
-                TempData["msg"] = "No bus found";
+                TempData["msg"] = "Selected bus not found.";
                 return RedirectToAction(nameof(Index));
             }
 
-            Admin admin = _context.admin.Where(
-              a => a.Id == adminid
-              ).FirstOrDefault();
-
+            Admin admin = _context.admin.Where(a => a.Id == adminid).FirstOrDefault();
 
             BusTrip trip = new BusTrip();
 
@@ -67,7 +87,7 @@ namespace BTRS.Controllers
             trip.Destination = destination;
             trip.StartDate = startdate;
             trip.EndDate = enddate;
-            trip.bus = _context.bus.Find(busid);
+            trip.bus = selectedBus;
 
             if (trip.StartDate > trip.EndDate)
             {
@@ -80,20 +100,23 @@ namespace BTRS.Controllers
                 return View(trip);
             }
 
-            if (trip.bus != null)
+            // Check if the selected bus already has trips
+            if (selectedBus.trips == null)
             {
-                if (trip.bus.trips != null && !trip.bus.trips.Contains(trip))
-                {
-                    trip.bus.trips.Add(trip);
-                }
+                selectedBus.trips = new List<BusTrip>();
+            }
+
+            if (!selectedBus.trips.Contains(trip))
+            {
+                selectedBus.trips.Add(trip);
             }
 
             _context.busTrip.Add(trip);
             _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
-
         }
+
 
         // GET: BusTripController/Edit/5
         public ActionResult Edit(int id)
