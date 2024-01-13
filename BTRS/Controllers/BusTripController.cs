@@ -200,10 +200,7 @@ namespace BTRS.Controllers
                 bus.trips.Remove(trip);
             }
 
-            _context.busTrip.Remove(trip);
-            _context.SaveChanges();
-
-            return RedirectToAction(nameof(Index));
+            return View(trip);
         }
 
         // POST: BusTripController/Delete/5
@@ -213,7 +210,8 @@ namespace BTRS.Controllers
         {
             try
             {
-
+                _context.busTrip.Remove(trip);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch

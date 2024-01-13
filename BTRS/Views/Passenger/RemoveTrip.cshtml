@@ -1,5 +1,5 @@
 ﻿@model BTRS.Models.BusTrip
-@Html.Partial("_adminTop")
+@Html.Partial("_userTop")
 
 @{
     ViewData["Title"] = "Delete";
@@ -9,7 +9,7 @@
 <div class="container">
     <h1>Delete</h1>
 
-    <h3>Are you sure you want to delete this trip?</h3>
+    <h3>Are you sure you want to remove this trip?</h3>
 
     <hr />
 
@@ -40,12 +40,12 @@
         </div>
     </div>
 
-    <form asp-action="Delete">
+    <form asp-action="RemoveTrip">
         <div class="row">
             <div class="col-md-6">
                 <input type="hidden" asp-for="TripId" />
                 <input type="submit" value="Delete" class="btn btn-danger" />
-                <button type="button" onclick="window.location.href='@Url.Action("Index")'" class="btn btn-secondary">Back to List</button>
+                <button type="button" onclick="window.location.href='@Url.Action("TripList")'" class="btn btn-secondary">Back to List</button>
             </div>
         </div>
     </form>

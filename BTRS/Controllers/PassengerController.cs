@@ -213,11 +213,17 @@ namespace BTRS.Controllers
 
                 return RedirectToAction("TripList");
         }
-
         public IActionResult RemoveTrip(int id)
         {
-            int passengerID = (int)HttpContext.Session.GetInt32("PassengerID");
             BusTrip trip = _context.busTrip.Find(id);
+            return View(trip);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult RemoveTrip(int id, BusTrip trip)
+        {
+            int passengerID = (int)HttpContext.Session.GetInt32("PassengerID");
 
             passengers_trips passenger_trip = _context.passengers_trips
             .FirstOrDefault(t => t.passenger.PassengerId == passengerID && t.trip.TripId == trip.TripId);
@@ -226,9 +232,10 @@ namespace BTRS.Controllers
             {
                 _context.passengers_trips.Remove(passenger_trip);
                 _context.SaveChanges();
+                return RedirectToAction("TripList");
             }
 
-            return RedirectToAction("TripList");
+            return View(trip);
         }
     }
 }
