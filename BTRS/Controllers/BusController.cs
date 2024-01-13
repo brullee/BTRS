@@ -52,6 +52,18 @@ namespace BTRS.Controllers
         public ActionResult Delete(int id)
         {
             Bus bus = _context.bus.Include(b => b.trips).FirstOrDefault(b => b.BusId == id);
+            
+            if (bus == null)
+            {
+                return NotFound();
+            }
+
+            if (bus.trips != null && bus.trips.Count > 0)
+            {
+                TempData["msg"] = "Cannot remove a bus when it is assigned to a trip";
+                return RedirectToAction(nameof(Index));
+
+            }
             return View(bus);
         }
 
@@ -62,20 +74,9 @@ namespace BTRS.Controllers
         {
             try
             {
-                if (bus == null)
-                {
-                    return NotFound();
-                }
-
-                if (bus.trips != null && bus.trips.Count > 0)
-                {
-                    TempData["msg"] = "Cannot remove a bus when it is assigned to a trip";
-                }
-                else
-                {
-                    _context.bus.Remove(bus);
-                    _context.SaveChanges();
-                }
+                _context.bus.Remove(bus);
+                _context.SaveChanges();
+                
                 return RedirectToAction(nameof(Index));
             }
             catch
