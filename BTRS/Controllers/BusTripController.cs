@@ -193,13 +193,6 @@ namespace BTRS.Controllers
         public ActionResult Delete(int id)
         {
             BusTrip trip = _context.busTrip.Find(id);
-            
-            if(trip.bus != null)
-            {
-                Bus bus = _context.bus.Find(trip.bus.BusId);
-                bus.trips.Remove(trip);
-            }
-
             return View(trip);
         }
 
@@ -210,6 +203,13 @@ namespace BTRS.Controllers
         {
             try
             {
+
+                if (trip.bus != null)
+                {
+                    Bus bus = _context.bus.Find(trip.bus.BusId);
+                    bus.trips.Remove(trip);
+                }
+
                 _context.busTrip.Remove(trip);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
