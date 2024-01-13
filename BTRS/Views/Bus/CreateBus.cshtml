@@ -1,40 +1,33 @@
 ﻿@model BTRS.Models.Bus
 @Html.Partial("_adminBusTop")
 
+<h1>Create</h1>
 
-@using (Html.BeginForm("CreateBus", "Bus", FormMethod.Post))
-{
-    <table>
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.CptName, "Captain name ")
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.CptName)
-                @Html.ValidationMessageFor(m => m.CptName)
-            </td>
-        </tr>
-        <br />
-
-        <tr>
-            <td>
-                @Html.LabelFor(m => m.NOofSeats, "Number of seats ")
-            </td>
-            <td>
-                @Html.TextBoxFor(m => m.NOofSeats)
-            </td>
-        </tr>
-        <br />
-
-    </table>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+    <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BusId" />
+            <div class="form-group">
+                <label asp-for="CptName" class="control-label"></label>
+                <input asp-for="CptName" class="form-control" />
+                <span asp-validation-for="CptName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NOofSeats" class="control-label"></label>
+                <input asp-for="NOofSeats" class="form-control" />
+                <span asp-validation-for="NOofSeats" class="text-danger"></span>
+            </div>
+            <br />
     <div>
         <a asp-action="Index" class="btn btn-secondary">Back</a>
         <input type="submit" value="Create bus" class="btn btn-primary" /> <br />
 
     </div>
 
-
-}
-
+    </form>
+    </div>
+</div>
 
 @TempData["Msg"]
